@@ -25,6 +25,29 @@ class ImgurApi: ImgurApiProtocol {
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 return .failure(URLError(.badServerResponse))
             }
+            let decodedResponse = try JSONDecoder().decode(ImgurResponse.self, from: data)
+            return .success(decodedResponse.data.filter { $0.images != nil && $0.images?.first?.type.contains("video") == false })
+        } catch(let error) {
+            print(error)
+            return .failure(error)
+        }
+    }
+    
+    func search(query: String, page: Int) async throws -> Result<[ImageModel], Error> {
+        let searchUrl = baseUrl
+            .appendingPathComponent("gallery/search/")
+            .appendingPathComponent("\(page)")
+            .appending(queryItems: [URLQueryItem(name: "q", value: query)])
+        
+        var request = URLRequest(url: searchUrl)
+        request.setValue("Client-ID \(clientId)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                return .failure(URLError(.badServerResponse))
+            }
             
             print(httpResponse)
             let decodedResponse = try JSONDecoder().decode(ImgurResponse.self, from: data)
@@ -34,6 +57,5 @@ class ImgurApi: ImgurApiProtocol {
             return .failure(error)
         }
     }
-    
     
 }

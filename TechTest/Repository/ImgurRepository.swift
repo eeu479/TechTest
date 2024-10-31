@@ -29,4 +29,20 @@ class ImgurRepository: ImgurRepositoryProtocol {
             return .failure(repositoryError)
         }
     }
+    
+    func search(query: String, page: Int) async throws -> Result<[ImageModel], ImgurRepositoryError> {
+        do {
+            let result = try await api.search(query: query, page: page)
+            let images = try result.get()
+            return .success(images)
+        } catch {
+            let repositoryError: ImgurRepositoryError
+            if let urlError = error as? URLError, urlError.code == .badServerResponse {
+                repositoryError = .searchError
+            } else {
+                repositoryError = .unknown(error: error)
+            }
+            return .failure(repositoryError)
+        }
+    }
 }

@@ -9,4 +9,6 @@ import Foundation
 import Combine
 
 protocol ImgurRepositoryProtocol {
-    func fetchFeed(page: Int) async throws -> Result<[ImageModel], ImgurRepositoryError>}
+    func fetchFeed(page: Int) async throws -> Result<[ImageModel], ImgurRepositoryError>
+    func search(query: String, page: Int) async throws -> Result<[ImageModel], ImgurRepositoryError>
+}

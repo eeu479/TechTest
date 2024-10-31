@@ -10,5 +10,6 @@ import Foundation
 enum ImgurRepositoryError: Error {
     case feedError
     case imageDetailsError
+    case searchError
     case unknown(error: Error)
 }
