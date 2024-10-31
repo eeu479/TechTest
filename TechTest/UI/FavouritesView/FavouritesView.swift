@@ -10,7 +10,7 @@ import SwiftUI
 
 struct FavouritesView: View {
     
-    @StateObject private var viewModel: FavouritesViewModel = FavouritesViewModel(repository: FavouritesRepository())
+    @StateObject private var viewModel: FavouritesViewModel = FavouritesViewModel(repository: FavouritesRepository.shared)
     private let columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 8), count: 2)
     
     var body: some View {

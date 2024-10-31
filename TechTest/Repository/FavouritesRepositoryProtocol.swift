@@ -13,5 +13,4 @@ protocol FavouritesRepositoryProtocol {
     func addFavourite(imageModel: ImageModel) -> Result<Bool, FavouritesRepositoryError>
     func removeFavourite(imageId: String) -> Result<Bool, FavouritesRepositoryError>
     func getFavourites() -> Result<[ImageModel], FavouritesRepositoryError>
-    func storeFavourites(favourites: [ImageModel]) -> Result<Bool, FavouritesRepositoryError>
 }
