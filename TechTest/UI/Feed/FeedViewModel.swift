@@ -11,6 +11,7 @@ import Combine
 @MainActor
 class FeedViewModel: ObservableObject {
     @Published var images: [ImageModel] = []
+    @Published var isInitialLoad: Bool = true
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     @Published var hasMorePages: Bool = true
@@ -64,6 +65,7 @@ class FeedViewModel: ObservableObject {
                     errorMessage = "Failed to fetch images"
                 }
             }
+            isInitialLoad = false
             isLoading = false
         }
     }

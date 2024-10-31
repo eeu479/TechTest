@@ -18,23 +18,28 @@ struct FeedView: View {
             TextField("Search...", text: $viewModel.searchQuery)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
-            ScrollView {
-                if(viewModel.images.count > 0) {
-                    LazyVGrid(columns: columns, spacing:8) {
-                        ForEach(viewModel.images) { image in
-                            NavigationLink(destination: ImageDetailsView(model: image)) {
-                                ImageCell(model: image, onFavourite: {
-                                    viewModel.favouriteButtonPressed(image: image)
-                                }).frame(height:150).onAppear {
-                                    if image.id == viewModel.images.last?.id {
-                                        viewModel.loadNextPage()
+            if viewModel.isInitialLoad {
+                ProgressView()
+                Spacer()
+            } else {
+                ScrollView {
+                    if(viewModel.images.count > 0) {
+                        LazyVGrid(columns: columns, spacing:8) {
+                            ForEach(viewModel.images) { image in
+                                NavigationLink(destination: ImageDetailsView(model: image)) {
+                                    ImageCell(model: image, onFavourite: {
+                                        viewModel.favouriteButtonPressed(image: image)
+                                    }).frame(height:150).onAppear {
+                                        if image.id == viewModel.images.last?.id {
+                                            viewModel.loadNextPage()
+                                        }
                                     }
                                 }
                             }
                         }
+                    } else {
+                        Text("No Images Found")
                     }
-                } else {
-                    Text("No Images Found")
                 }
             }
         }
