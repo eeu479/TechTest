@@ -19,6 +19,11 @@
 		B90001E02CD3E24100A12D5A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90001DE2CD3E24100A12D5A /* ImageCell.swift */; };
 		B90001E12CD3E24100A12D5A /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90001DF2CD3E24100A12D5A /* LoadingImageView.swift */; };
 		B90001E32CD3E24A00A12D5A /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90001E22CD3E24A00A12D5A /* FeedView.swift */; };
+		B90001E62CD3E29A00A12D5A /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90001E52CD3E29A00A12D5A /* FavouritesView.swift */; };
+		B90001E92CD3E2D200A12D5A /* FavouritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90001E82CD3E2D200A12D5A /* FavouritesRepository.swift */; };
+		B90001EB2CD3E2E100A12D5A /* FavouritesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90001EA2CD3E2E100A12D5A /* FavouritesRepositoryProtocol.swift */; };
+		B90001ED2CD3E31400A12D5A /* FavouritesRepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90001EC2CD3E31400A12D5A /* FavouritesRepositoryError.swift */; };
+		B90001EF2CD3E51100A12D5A /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90001EE2CD3E51100A12D5A /* FavouritesViewModel.swift */; };
 		B95B4BAF2CD282F10093005F /* TechTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95B4BAE2CD282F10093005F /* TechTestApp.swift */; };
 		B95B4BB12CD282F10093005F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95B4BB02CD282F10093005F /* ContentView.swift */; };
 		B95B4BB32CD282F20093005F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B95B4BB22CD282F20093005F /* Assets.xcassets */; };
@@ -60,6 +65,12 @@
 		B90001DE2CD3E24100A12D5A /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		B90001DF2CD3E24100A12D5A /* LoadingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingImageView.swift; sourceTree = "<group>"; };
 		B90001E22CD3E24A00A12D5A /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		B90001E52CD3E29A00A12D5A /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		B90001E82CD3E2D200A12D5A /* FavouritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesRepository.swift; sourceTree = "<group>"; };
+		B90001EA2CD3E2E100A12D5A /* FavouritesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesRepositoryProtocol.swift; sourceTree = "<group>"; };
+		B90001EC2CD3E31400A12D5A /* FavouritesRepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesRepositoryError.swift; sourceTree = "<group>"; };
+		B90001EE2CD3E51100A12D5A /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		B90001F02CD3EC9700A12D5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B95B4BAB2CD282F10093005F /* TechTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B95B4BAE2CD282F10093005F /* TechTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechTestApp.swift; sourceTree = "<group>"; };
 		B95B4BB02CD282F10093005F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,8 +127,20 @@
 				B90001CF2CD3C84500A12D5A /* ImgurRepositoryProtocol.swift */,
 				B90001D32CD3C86300A12D5A /* ImgurRepositoryError.swift */,
 				B90001D12CD3C84D00A12D5A /* ImgurRepository.swift */,
+				B90001E82CD3E2D200A12D5A /* FavouritesRepository.swift */,
+				B90001EA2CD3E2E100A12D5A /* FavouritesRepositoryProtocol.swift */,
+				B90001EC2CD3E31400A12D5A /* FavouritesRepositoryError.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		B90001E42CD3E28A00A12D5A /* FavouritesView */ = {
+			isa = PBXGroup;
+			children = (
+				B90001E52CD3E29A00A12D5A /* FavouritesView.swift */,
+				B90001EE2CD3E51100A12D5A /* FavouritesViewModel.swift */,
+			);
+			path = FavouritesView;
 			sourceTree = "<group>";
 		};
 		B95B4BA22CD282F10093005F = {
@@ -143,6 +166,7 @@
 		B95B4BAD2CD282F10093005F /* TechTest */ = {
 			isa = PBXGroup;
 			children = (
+				B90001F02CD3EC9700A12D5A /* Info.plist */,
 				B90001CE2CD3C83700A12D5A /* Repository */,
 				B90001C52CD3C5F800A12D5A /* Network */,
 				B95B4BE22CD2850B0093005F /* UI */,
@@ -193,6 +217,7 @@
 		B95B4BE22CD2850B0093005F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B90001E42CD3E28A00A12D5A /* FavouritesView */,
 				B95B4BE92CD28CFD0093005F /* ImageDetailsView */,
 				B95B4BE62CD2866D0093005F /* Components */,
 				B95B4BE32CD285100093005F /* Feed */,
@@ -359,13 +384,18 @@
 			files = (
 				B95B4BB12CD282F10093005F /* ContentView.swift in Sources */,
 				B95B4BDB2CD283EC0093005F /* ImageModel.swift in Sources */,
+				B90001E62CD3E29A00A12D5A /* FavouritesView.swift in Sources */,
 				B90001DB2CD3DB2400A12D5A /* MainTabView.swift in Sources */,
+				B90001ED2CD3E31400A12D5A /* FavouritesRepositoryError.swift in Sources */,
 				B90001C92CD3C61200A12D5A /* ImgurApiProtocol.swift in Sources */,
 				B90001DD2CD3E1A400A12D5A /* ImageDetailsView.swift in Sources */,
 				B90001C72CD3C60700A12D5A /* ImgurApi.swift in Sources */,
 				B90001D62CD3CB2200A12D5A /* FeedViewModel.swift in Sources */,
 				B90001D42CD3C86300A12D5A /* ImgurRepositoryError.swift in Sources */,
+				B90001E92CD3E2D200A12D5A /* FavouritesRepository.swift in Sources */,
+				B90001EF2CD3E51100A12D5A /* FavouritesViewModel.swift in Sources */,
 				B90001E32CD3E24A00A12D5A /* FeedView.swift in Sources */,
+				B90001EB2CD3E2E100A12D5A /* FavouritesRepositoryProtocol.swift in Sources */,
 				B95B4BDD2CD284170093005F /* ImageItemModel.swift in Sources */,
 				B95B4BAF2CD282F10093005F /* TechTestApp.swift in Sources */,
 				B90001D02CD3C84500A12D5A /* ImgurRepositoryProtocol.swift in Sources */,
@@ -536,6 +566,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TechTest/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -575,6 +606,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TechTest/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

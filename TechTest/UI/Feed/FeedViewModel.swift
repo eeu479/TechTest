@@ -21,11 +21,27 @@ class FeedViewModel: ObservableObject {
     
     
     private let repository: ImgurRepositoryProtocol
+    private let favouritesRepository: FavouritesRepositoryProtocol
     private var currentPage: Int = 0
     
-    init(repository: ImgurRepositoryProtocol) {
+    init(repository: ImgurRepositoryProtocol, favouritesRepository: FavouritesRepositoryProtocol) {
         self.repository = repository
+        self.favouritesRepository = favouritesRepository
         self.setupSearchSubscription()
+    }
+    
+    func favouriteButtonPressed(image: ImageModel) {
+        if image.isFavourite == true {
+            _ = favouritesRepository.removeFavourite(imageId: image.id)
+            if let index = images.firstIndex(where: { $0.id == image.id }) {
+                images[index].isFavourite = false
+            }
+        } else {
+            _ = favouritesRepository.addFavourite(imageModel: image)
+            if let index = images.firstIndex(where: { $0.id == image.id }) {
+                images[index].isFavourite = true
+            }
+        }
     }
     
     func loadNextPage() {
@@ -37,11 +53,15 @@ class FeedViewModel: ObservableObject {
         Task {
             do {
                 let result = try await repository.fetchFeed(page: currentPage)
-                let newImages = try result.get()
+                let newImages = try result.get().map { image in
+                    var newImage = image
+                    newImage.isFavourite = favouritesRepository.favouriteIds.contains(newImage.id)
+                    return newImage
+                }
                 self.images.append(contentsOf: newImages)
             } catch(let error) {
                 if(error is ImgurRepositoryError) {
-                    
+                    errorMessage = "Failed to fetch images"
                 }
             }
             isLoading = false

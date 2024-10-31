@@ -17,6 +17,12 @@ struct MainTabView: View {
                 Image(systemName: "house.fill")
                 Text("Feed")
             }
+            NavigationStack {
+                FavouritesView()
+            }.tabItem {
+                Image(systemName: "star.fill")
+                Text("Favourites")
+            }
         }
     }
 }

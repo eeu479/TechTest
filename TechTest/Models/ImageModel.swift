@@ -16,6 +16,7 @@ struct ImageModel: Codable, Identifiable {
     let views: Int?
     let ups: Int?
     let downs: Int?
+    var isFavourite: Bool?
 }
 
 
@@ -34,7 +35,8 @@ extension ImageModel {
             description: "Test Image Description",
             views: 100,
             ups: 100,
-            downs: 100
+            downs: 100,
+            isFavourite: true
         )
     }
 }

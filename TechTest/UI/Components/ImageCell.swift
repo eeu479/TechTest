@@ -11,6 +11,7 @@ import SwiftUI
 struct ImageCell: View {
     
     let model: ImageModel
+    var onFavourite: () -> Void
     
     private var imageUrl: URL? {
         
@@ -25,6 +26,17 @@ struct ImageCell: View {
         ZStack(alignment: .topTrailing) {
             if let url = imageUrl {
                 LoadingImageView(url: url)
+                Button(action: onFavourite) {
+                    Image(systemName: (model.isFavourite ?? false) ? "star.fill" : "star")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundStyle(Color.yellow)
+                }
+                .padding(4)
+                .background(Color.white)
+                .clipShape(Circle())
+                .shadow(radius: 4)
+                .padding()
             } else {
                 ZStack {
                     Rectangle().fill(.gray)
@@ -36,5 +48,5 @@ struct ImageCell: View {
 }
 
 #Preview {
-    ImageCell(model: ImageModel.MOCK)
+    ImageCell(model: ImageModel.MOCK, onFavourite: {})
 }
