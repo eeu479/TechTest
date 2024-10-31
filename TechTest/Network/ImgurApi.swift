@@ -13,7 +13,7 @@ class ImgurApi: ImgurApiProtocol {
     
     func getFeed(page: Int) async throws -> Result<[ImageModel], Error> {
         let feedUrl = baseUrl
-            .appendingPathComponent("gallery")
+            .appendingPathComponent("gallery/hot/")
             .appendingPathComponent("\(page)")
         
         var request = URLRequest(url: feedUrl)
@@ -26,9 +26,11 @@ class ImgurApi: ImgurApiProtocol {
                 return .failure(URLError(.badServerResponse))
             }
             
+            print(httpResponse)
             let decodedResponse = try JSONDecoder().decode(ImgurResponse.self, from: data)
-            return .success(decodedResponse.data)
-        } catch {
+            return .success(decodedResponse.data.filter { $0.images != nil && $0.images?.first?.type.contains("video") == false })
+        } catch(let error) {
+            print(error)
             return .failure(error)
         }
     }

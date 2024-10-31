@@ -10,4 +10,5 @@ import Foundation
 struct ImageItemModel: Codable, Identifiable {
     let id: String
     let link: String?
+    let type: String
 }
